@@ -2,7 +2,7 @@
    ESP8266 FastLED WebServer: https://github.com/jasoncoon/esp8266-fastled-webserver
    Copyright (C) 2015-2018 Jason Coon
 
-   This program is free software: you can redistribute it and/or modify 
+   This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation, either version 3 of the License, or
    (at your option) any later version.
@@ -14,7 +14,7 @@
 
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/ 
+*/
 
 //#define FASTLED_ALLOW_INTERRUPTS 1
 //#define INTERRUPT_THRESHOLD 1
@@ -31,6 +31,8 @@ extern "C" {
 //#include <ESP8266mDNS.h>
 #include <ESP8266WebServer.h>
 #include <ESP8266HTTPUpdateServer.h>
+#include <DNSServer.h>
+#include <WiFiManager.h>
 //#include <WebSocketsServer.h>
 #include <FS.h>
 #include <EEPROM.h>
@@ -264,7 +266,13 @@ void setup() {
 
   //disabled due to https://github.com/jasoncoon/esp8266-fastled-webserver/issues/62
   //initializeWiFi();
+  WiFiManager wifiManager;
 
+
+
+
+  //Hier wird der Name und das Passwort des Setup Hotspots festgelegt
+  wifiManager.autoConnect("Light-Setup", "MPower");
   if (apMode)
   {
     WiFi.mode(WIFI_AP);
@@ -324,7 +332,7 @@ void setup() {
 
   //Definition der verschiedenen Modi
   //Lava Twinkles
-//////////////////////////////////////////////////////////////////////////////////////  
+//////////////////////////////////////////////////////////////////////////////////////
   //Anschalten von Lava Twinkles
  webServer.on("/LavaTwinklesOn", []() {
     webServer.send(200, "text/plain", "Lava Twinkles an!");
@@ -413,7 +421,7 @@ void setup() {
   webServer.on("/FairyLightTwinklesState", []() {
    webServer.send(200, "text/plain", String(currentPatternIndex == 10));
   });
-  
+
  ///////////////////////////////////////////////////////////////////////////////////////
   //Pride
   //Anschalten von Pride
@@ -452,8 +460,8 @@ void setup() {
    webServer.send(200, "text/plain", String(currentPatternIndex == 1));
   });
 
-  
-  
+
+
   httpUpdateServer.setup(&webServer);
 
   webServer.on("/all", HTTP_GET, []() {
@@ -557,13 +565,13 @@ void setup() {
     sendInt(brightness);
   });
 
-  
+
 
  webServer.on("/setHelligkeit", []() {
     brightness = webServer.arg("brightness").toInt();
     brightness = (int)(brightness*2.55);
     FastLED.setBrightness(brightness);
-    
+
     webServer.send(200, "text/plain", webServer.arg(String(brightness)));
   });
 
@@ -571,7 +579,7 @@ void setup() {
     webServer.send(200, "text/plain",String((int)(FastLED.getBrightness()/2.55)));
   });
 
-  
+
 
   webServer.on("/autoplay", HTTP_POST, []() {
     String value = webServer.arg("value");
