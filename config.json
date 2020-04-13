@@ -40,7 +40,8 @@
             "switchType": "stateful",
             "onUrl": "http://192.168.178.45/on",
             "offUrl": "http://192.168.178.45/off",
-            "statusUrl": "http://192.168.178.45/status"
+            "statusUrl": "http://192.168.178.45/status",
+            "pullInterval": 500
         },
         {
             "accessory": "HTTP-SWITCH",
@@ -48,7 +49,8 @@
             "switchType": "stateful",
             "onUrl": "http://192.168.178.36/LavaTwinklesOn",
             "offUrl": "http://192.168.178.36/LavaTwinklesOff",
-            "statusUrl": "http://192.168.178.36/LavaTwinklesState"
+            "statusUrl": "http://192.168.178.36/LavaTwinklesState",
+            "pullInterval": 500
         },
         {
             "accessory": "HTTP-SWITCH",
@@ -56,7 +58,8 @@
             "switchType": "stateful",
             "onUrl": "http://192.168.178.36/FireTwinklesOn",
             "offUrl": "http://192.168.178.36/FireTwinklesOff",
-            "statusUrl": "http://192.168.178.36/FireTwinklesState"
+            "statusUrl": "http://192.168.178.36/FireTwinklesState",
+            "pullInterval": 500
         },
         {
             "accessory": "HTTP-SWITCH",
@@ -64,7 +67,8 @@
             "switchType": "stateful",
             "onUrl": "http://192.168.178.36/ForestTwinklesOn",
             "offUrl": "http://192.168.178.36/ForestTwinklesOff",
-            "statusUrl": "http://192.168.178.36/ForestTwinklesState"
+            "statusUrl": "http://192.168.178.36/ForestTwinklesState",
+            "pullInterval": 500
         },
         {
             "accessory": "HTTP-SWITCH",
@@ -72,7 +76,8 @@
             "switchType": "stateful",
             "onUrl": "http://192.168.178.36/FairyLightTwinklesOn",
             "offUrl": "http://192.168.178.36/FairyLightTwinklesOff",
-            "statusUrl": "http://192.168.178.36/FairyLightTwinklesState"
+            "statusUrl": "http://192.168.178.36/FairyLightTwinklesState",
+            "pullInterval": 500
         },
         {
             "accessory": "HTTP-SWITCH",
@@ -80,7 +85,8 @@
             "switchType": "stateful",
             "onUrl": "http://192.168.178.36/BeatOn",
             "offUrl": "http://192.168.178.36/BeatOff",
-            "statusUrl": "http://192.168.178.36/BeatState"
+            "statusUrl": "http://192.168.178.36/BeatState",
+            "pullInterval": 500
         },
         {
             "accessory": "HTTP-SWITCH",
@@ -88,7 +94,8 @@
             "switchType": "stateful",
             "onUrl": "http://192.168.178.36/PrideOn",
             "offUrl": "http://192.168.178.36/PrideOff",
-            "statusUrl": "http://192.168.178.36/PrideState"
+            "statusUrl": "http://192.168.178.36/PrideState",
+            "pullInterval": 500
         }
     ]
 }
