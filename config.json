@@ -1,0 +1,94 @@
+{
+    "bridge": {
+        "name": "Homebridge",
+        "username": "0E:B4:27:E9:81:FE",
+        "manufacturer": "homebridge.io",
+        "model": "homebridge",
+        "port": 51826,
+        "pin": "445-73-474"
+    },
+    "description": "Home Smart Home",
+    "platforms": [
+        {
+            "platform": "config",
+            "name": "Config",
+            "port": 8080,
+            "auth": "form",
+            "theme": "red",
+            "restart": "sudo -n systemctl restart homebridge",
+            "temp": "/sys/class/thermal/thermal_zone0/temp",
+            "sudo": true,
+            "log": {
+                "method": "custom",
+                "command": "journalctl -o cat -n 500 -f -u homebridge"
+            }
+        }
+    ],
+    "accessories": [
+        {
+            "accessory": "HTTP-DIMMER",
+            "name": "Stehleuchte",
+            "onUrl": "http://192.168.178.36/on",
+            "offUrl": "http://192.168.178.36/off",
+            "statusUrl": "http://192.168.178.36/state",
+            "setBrightnessUrl": "http://192.168.178.36/setHelligkeit?brightness=",
+            "getBrightnessUrl": "http://192.168.178.36/getHelligkeit"
+        },
+        {
+            "accessory": "HTTP-SWITCH",
+            "name": "Kunstmodell",
+            "switchType": "stateful",
+            "onUrl": "http://192.168.178.45/on",
+            "offUrl": "http://192.168.178.45/off",
+            "statusUrl": "http://192.168.178.45/status"
+        },
+        {
+            "accessory": "HTTP-SWITCH",
+            "name": "Lava Twinkles",
+            "switchType": "stateful",
+            "onUrl": "http://192.168.178.36/LavaTwinklesOn",
+            "offUrl": "http://192.168.178.36/LavaTwinklesOff",
+            "statusUrl": "http://192.168.178.36/LavaTwinklesState"
+        },
+        {
+            "accessory": "HTTP-SWITCH",
+            "name": "Fire Twinkles",
+            "switchType": "stateful",
+            "onUrl": "http://192.168.178.36/FireTwinklesOn",
+            "offUrl": "http://192.168.178.36/FireTwinklesOff",
+            "statusUrl": "http://192.168.178.36/FireTwinklesState"
+        },
+        {
+            "accessory": "HTTP-SWITCH",
+            "name": "Forest Twinkles",
+            "switchType": "stateful",
+            "onUrl": "http://192.168.178.36/ForestTwinklesOn",
+            "offUrl": "http://192.168.178.36/ForestTwinklesOff",
+            "statusUrl": "http://192.168.178.36/ForestTwinklesState"
+        },
+        {
+            "accessory": "HTTP-SWITCH",
+            "name": "Fairy Light Twinkles",
+            "switchType": "stateful",
+            "onUrl": "http://192.168.178.36/FairyLightTwinklesOn",
+            "offUrl": "http://192.168.178.36/FairyLightTwinklesOff",
+            "statusUrl": "http://192.168.178.36/FairyLightTwinklesState"
+        },
+        {
+            "accessory": "HTTP-SWITCH",
+            "name": "Beat",
+            "switchType": "stateful",
+            "onUrl": "http://192.168.178.36/BeatOn",
+            "offUrl": "http://192.168.178.36/BeatOff",
+            "statusUrl": "http://192.168.178.36/BeatState"
+        },
+        {
+            "accessory": "HTTP-SWITCH",
+            "name": "Pride",
+            "switchType": "stateful",
+            "onUrl": "http://192.168.178.36/PrideOn",
+            "offUrl": "http://192.168.178.36/PrideOff",
+            "statusUrl": "http://192.168.178.36/PrideState"
+        }
+    ]
+}
